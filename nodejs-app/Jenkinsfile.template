@@ -1,12 +1,15 @@
-
-
-
-//
 pipeline {
   agent none
   options { 
     buildDiscarder(logRotator(numToKeepStr: '2'))
   }
+  
+  post {
+    aborted {
+      echo "Why didn't you push my button?"
+    }
+  }
+  
   stages {
    stage('Test') {
    agent { label 'nodejs-app' }
@@ -44,7 +47,7 @@ pipeline {
       }
       input {
         message "Should we deploy?"
-        submitter "ram"
+        //submitter "ram"
         submitterParameter "APPROVER"
       }
       steps {
