@@ -60,10 +60,7 @@ pipeline {
         branch 'master'
       }
       
-      steps {
-        echo "TODO - build and push image"
-        unstash 'app'
-      }
+     
 
       options {
         timeout(time: 60, unit: 'SECONDS') 
