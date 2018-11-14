@@ -1,3 +1,4 @@
+
 //
 pipeline {
   agent none
@@ -24,6 +25,18 @@ pipeline {
          echo "TODO - build and push image"
         // sh 'java -version'
 
+      }
+    }
+    stage('Deploy') {
+      when {
+        beforeAgent true
+        branch 'master'
+      }
+      input {
+        message "Should we continue?"
+      }
+      steps {
+        echo "Continuing with deployment"
       }
     }
   }
