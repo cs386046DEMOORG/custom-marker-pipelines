@@ -1,4 +1,5 @@
 
+
 //
 pipeline {
   agent none
@@ -21,6 +22,11 @@ pipeline {
          beforeAgent true
          branch 'master'
       }
+      
+      options {
+        timeout(time: 30, unit: 'SECONDS') 
+      }
+
       steps {
          echo "TODO - build and push image"
         // sh 'java -version'
